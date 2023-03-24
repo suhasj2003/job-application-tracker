@@ -16,7 +16,7 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long applicationID;
-    
+
     private String company;
     private String title;
     private String jobID;
