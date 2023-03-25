@@ -3,14 +3,17 @@ package com.suhasj2003.jobapptrack.applications;
 import java.sql.Timestamp;
 import java.time.Instant;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "application")
 public class Application {
     
     @Id
@@ -21,6 +24,10 @@ public class Application {
     private String title;
     private String jobID;
     private Timestamp universalTimestamp;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "userID")
+    private Long userID;
 
 
     public Application(Long applicationID, String company, String title, String jobID) {
